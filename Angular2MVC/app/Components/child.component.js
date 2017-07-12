@@ -12,7 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var forms_1 = require("@angular/forms");
 var modal_1 = require("ng2-bs3-modal/components/modal");
 var core_1 = require("@angular/core");
-var ObserverService_1 = require("../Service/ObserverService");
+var observer_service_1 = require("../Services/observer.service");
+var global_1 = require("../Shared/global");
 var ChildComponent = (function () {
     function ChildComponent(fb, _stateService) {
         this.fb = fb;
@@ -66,9 +67,9 @@ __decorate([
 ChildComponent = __decorate([
     core_1.Component({
         selector: 'child-component',
-        templateUrl: 'app/Components/child.component.html'
+        templateUrl: global_1.Global.TEMPLATE_LOCATION + '/child.template.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, ObserverService_1.ObserverService])
+    __metadata("design:paramtypes", [forms_1.FormBuilder, observer_service_1.ObserverService])
 ], ChildComponent);
 exports.ChildComponent = ChildComponent;
 //# sourceMappingURL=child.component.js.map

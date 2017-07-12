@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var user_service_1 = require("../Service/user.service");
+var user_service_1 = require("../Services/user.service");
 var forms_1 = require("@angular/forms");
 var enum_1 = require("../Shared/enum");
 var global_1 = require("../Shared/global");
@@ -122,7 +122,7 @@ __decorate([
 UserComponent = __decorate([
     core_1.Component({
         selector: 'user-component',
-        templateUrl: 'app/Components/user.component.html'
+        templateUrl: global_1.Global.TEMPLATE_LOCATION + '/user.template.html'
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder, user_service_1.UserService])
 ], UserComponent);

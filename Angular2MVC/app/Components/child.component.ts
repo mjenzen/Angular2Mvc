@@ -3,11 +3,12 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from "rxjs/Subscription";
-import { ObserverService } from "../Service/ObserverService";
+import { ObserverService } from "../Services/observer.service";
+import { Global } from "../Shared/global";
 
 @Component({
     selector: 'child-component',
-    templateUrl: 'app/Components/child.component.html'
+    templateUrl: Global.TEMPLATE_LOCATION +'child.template.html'
 })
 
 export class ChildComponent implements OnInit{

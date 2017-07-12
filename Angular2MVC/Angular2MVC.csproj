@@ -189,9 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Index.html" />
-    <Content Include="app\Components\child.component.html" />
-    <Content Include="app\Components\StateComponent.html" />
-    <Content Include="app\Components\user.component.html" />
+    <Content Include="app\Templates\child.template.html" />
+    <Content Include="app\Templates\state.template.html" />
+    <Content Include="app\Templates\user.template.html" />
     <Content Include="app\Model\user.js" />
     <Content Include="app\assets\Index.js" />
     <Content Include="App_Data\UserDB.mdf" />
@@ -294,8 +294,8 @@
     <TypeScriptCompile Include="app\Model\DropDownValue.ts" />
     <TypeScriptCompile Include="app\Model\State.ts" />
     <TypeScriptCompile Include="app\Model\user.ts" />
-    <TypeScriptCompile Include="app\Service\ObserverService.ts" />
-    <TypeScriptCompile Include="app\Service\user.service.ts" />
+    <TypeScriptCompile Include="app\Services\observer.service.ts" />
+    <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="app\Shared\enum.ts" />
     <TypeScriptCompile Include="app\Shared\global.ts" />
   </ItemGroup>

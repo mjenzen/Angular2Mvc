@@ -10,8 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
+var global_1 = require("../Shared/global");
 var DropDownValue_1 = require("../Model/DropDownValue");
-var ObserverService_1 = require("../Service/ObserverService");
+var observer_service_1 = require("../Services/observer.service");
 var StateComponent = (function () {
     function StateComponent(_stateService) {
         this._stateService = _stateService;
@@ -35,9 +36,9 @@ var StateComponent = (function () {
 StateComponent = __decorate([
     core_1.Component({
         selector: 'state-component',
-        templateUrl: 'app/Components/StateComponent.html'
+        templateUrl: global_1.Global.TEMPLATE_LOCATION + '/state.template.html'
     }),
-    __metadata("design:paramtypes", [ObserverService_1.ObserverService])
+    __metadata("design:paramtypes", [observer_service_1.ObserverService])
 ], StateComponent);
 exports.StateComponent = StateComponent;
 //# sourceMappingURL=state.component.js.map

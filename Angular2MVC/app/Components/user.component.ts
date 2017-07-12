@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, ViewChild } from '@angular/core';
-import { UserService } from '../Service/user.service';
+import { UserService } from '../Services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from '../Model/user';
 import { DBOperation } from '../Shared/enum';
@@ -11,7 +11,7 @@ import { ModalComponent } from "ng2-bs3-modal/components/modal";
 
 @Component({
     selector: 'user-component',
-    templateUrl: 'app/Components/user.component.html'
+    templateUrl: Global.TEMPLATE_LOCATION + '/user.template.html'
 })
 
 export class UserComponent implements OnInit {

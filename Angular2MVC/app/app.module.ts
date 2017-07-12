@@ -9,9 +9,9 @@ import { routing } from './app.routing';
 import { UserComponent } from './components/user.component';
 import { HomeComponent } from './components/home.component';
 import { ChildComponent } from './components/child.component';
-import { UserService } from './Service/user.service'
+import { UserService } from './Services/user.service'
 import { StateComponent } from "./Components/state.component";
-import { ObserverService } from "./Service/ObserverService";
+import { ObserverService } from "./Services/observer.service";
 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, Ng2Bs3ModalModule],
