@@ -18,7 +18,5 @@ import { ObserverService } from "./Services/observer.service";
     declarations: [AppComponent, UserComponent, HomeComponent, ChildComponent, StateComponent],
     providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService, ObserverService],
     bootstrap: [AppComponent]
-
-
 })
 export class AppModule { }
