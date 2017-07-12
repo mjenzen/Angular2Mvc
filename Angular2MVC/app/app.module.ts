@@ -20,5 +20,6 @@ import { ObserverService } from "./Service/ObserverService";
     bootstrap: [AppComponent]
 
 
+
 })
 export class AppModule { }
