@@ -1,57 +1,9 @@
-﻿<div>
-    <nav class='navbar navbar-inverse'>
-        <div class='container-fluid'>
-            <ul class='nav navbar-nav'>
-                <li><a [routerLink]="['home']">Home</a></li>
-                <li><a [routerLink]="['child']">book Management</a></li>
-                <li><a [routerLink]="['user']">Users Management</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class='container'>
-        <state-component></state-component>
-
-        <div class="row">
-            <div class="col-md-6">
-                <child-component></child-component>
-            </div>
-
-
-            <div class="col-md-6">
-                <child-component></child-component>
-            </div>
-
-        </div>
-
-
-        <div class="row">
-            <div class="col-md-6">
-                <child-component></child-component>
-            </div>
-
-
-            <div class="col-md-6">
-                <child-component></child-component>
-            </div>
-
-        </div>
-
-        <div class="row">
-            <div class="col-md-6">
-                <child-component></child-component>
-            </div>
-
-
-            <div class="col-md-6">
-                <child-component></child-component>
-            </div>
-
-        </div>
-        <br />
-        <user-component></user-component>
-
-        <router-outlet></router-outlet>
+﻿<nav class='navbar navbar-inverse'>
+    <div class='container-fluid'>
+        <ul class='nav navbar-nav'>
+            <li><a [routerLink]="['home']">Home</a></li>
+        </ul>
     </div>
-</div>
+</nav>
 
- <script src="assets/Index.js"></script>
+<router-outlet></router-outlet>

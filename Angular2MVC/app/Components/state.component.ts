@@ -3,7 +3,6 @@ import { UserService } from '../Services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../Shared/global';
-import { ChildComponent } from './child.component';
 import { EventEmitter } from "events";
 import { DropdownValue } from "../Model/DropDownValue";
 import { ObserverService } from "../Services/observer.service";

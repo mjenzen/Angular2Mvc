@@ -122,7 +122,7 @@ __decorate([
 UserComponent = __decorate([
     core_1.Component({
         selector: 'user-component',
-        templateUrl: global_1.Global.TEMPLATE_LOCATION + '/user.template.html'
+        templateUrl: global_1.Global.TEMPLATE_LOCATION + 'user.template.html'
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder, user_service_1.UserService])
 ], UserComponent);

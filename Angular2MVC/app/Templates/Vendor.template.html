@@ -1,0 +1,40 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Vendor (State Id: <strong>{{item}})</strong></h3>
+        <span class="pull-right collapsePanel" style="margin-top: -20px; cursor:pointer"><i class="glyphicon glyphicon-chevron-up"></i></span>
+    </div>
+    <div class="panel-body" *ngFor="let book of books">
+        <div class="row col-lg-12">
+            <h4> Title : {{book.title}} </h4> <h4>Price: {{book.price}}</h4>
+            <button title="Edit" class="btn btn-primary" (click)="editUser(book.id)">Edit</button>
+        </div>
+    </div>
+</div>
+
+
+<modal #modal>
+    <form novalidate (ngSubmit)="onSubmit(leadContactFrm)" [formGroup]="leadContactFrm">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">sssss</h4>
+        </modal-header>
+        <modal-body>
+
+            <div class="form-group">
+                <div>
+                    <span>Full name*</span>
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="FirstName">
+                </div>
+                <div>
+                    <span>Full name</span>
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="LastName">
+                </div>
+            </div>
+        </modal-body>
+        <modal-footer>
+            <div>
+                <a class="btn btn-default" (click)="modal.dismiss()">Cancel</a>
+                <button type="submit" [disabled]="leadContactFrm.invalid" class="btn btn-primary"><!--{{modalBtnTitle}}--></button>
+            </div>
+        </modal-footer>
+    </form>
+</modal>

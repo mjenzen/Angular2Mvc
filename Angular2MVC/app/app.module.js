@@ -14,12 +14,16 @@ var app_component_1 = require("./app.component");
 var ng2_bs3_modal_1 = require("ng2-bs3-modal/ng2-bs3-modal");
 var http_1 = require("@angular/http");
 var app_routing_1 = require("./app.routing");
-var user_component_1 = require("./components/user.component");
-var home_component_1 = require("./components/home.component");
-var child_component_1 = require("./components/child.component");
 var user_service_1 = require("./Services/user.service");
 var state_component_1 = require("./Components/state.component");
 var observer_service_1 = require("./Services/observer.service");
+var characteristics_component_1 = require("./Components/characteristics.component");
+var leadContact_component_1 = require("./Components/leadContact.component");
+var location_component_1 = require("./Components/location.component");
+var report_component_1 = require("./Components/report.component");
+var technicalContact_component_1 = require("./Components/technicalContact.component");
+var vendor_component_1 = require("./Components/vendor.component");
+var dashboard_component_1 = require("./Components/dashboard.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -28,7 +32,8 @@ var AppModule = (function () {
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
-        declarations: [app_component_1.AppComponent, user_component_1.UserComponent, home_component_1.HomeComponent, child_component_1.ChildComponent, state_component_1.StateComponent],
+        declarations: [app_component_1.AppComponent, state_component_1.StateComponent, characteristics_component_1.CharacteristicComponent, leadContact_component_1.LeadContactComponent,
+            location_component_1.LocationComponent, report_component_1.ReportComponent, technicalContact_component_1.TechnicalContactComponent, vendor_component_1.VendorComponent, dashboard_component_1.DashboardComponent],
         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, user_service_1.UserService, observer_service_1.ObserverService],
         bootstrap: [app_component_1.AppComponent]
     })

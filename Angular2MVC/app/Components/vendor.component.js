@@ -14,8 +14,8 @@ var modal_1 = require("ng2-bs3-modal/components/modal");
 var core_1 = require("@angular/core");
 var observer_service_1 = require("../Services/observer.service");
 var global_1 = require("../Shared/global");
-var ChildComponent = (function () {
-    function ChildComponent(fb, _stateService) {
+var VendorComponent = (function () {
+    function VendorComponent(fb, _stateService) {
         this.fb = fb;
         this._stateService = _stateService;
         this.books = [
@@ -37,11 +37,11 @@ var ChildComponent = (function () {
         ];
         this.books.length;
     }
-    ChildComponent.prototype.ngOnDestroy = function () {
+    VendorComponent.prototype.ngOnDestroy = function () {
         // prevent memory leak when component is destroyed
         this.subscription.unsubscribe();
     };
-    ChildComponent.prototype.ngOnInit = function () {
+    VendorComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.leadContactFrm = this.fb.group({
             Id: [''],
@@ -53,23 +53,18 @@ var ChildComponent = (function () {
             _this.item = item;
         });
     };
-    ChildComponent.prototype.onSubmit = function (formData) {
-    };
-    ChildComponent.prototype.editUser = function (id) {
-        this.modal.open();
-    };
-    return ChildComponent;
+    return VendorComponent;
 }());
 __decorate([
     core_1.ViewChild('modal'),
     __metadata("design:type", modal_1.ModalComponent)
-], ChildComponent.prototype, "modal", void 0);
-ChildComponent = __decorate([
+], VendorComponent.prototype, "modal", void 0);
+VendorComponent = __decorate([
     core_1.Component({
-        selector: 'child-component',
-        templateUrl: global_1.Global.TEMPLATE_LOCATION + 'child.template.html'
+        selector: 'vendor-component',
+        templateUrl: global_1.Global.TEMPLATE_LOCATION + 'vendor.template.html'
     }),
     __metadata("design:paramtypes", [forms_1.FormBuilder, observer_service_1.ObserverService])
-], ChildComponent);
-exports.ChildComponent = ChildComponent;
-//# sourceMappingURL=child.component.js.map
+], VendorComponent);
+exports.VendorComponent = VendorComponent;
+//# sourceMappingURL=vendor.component.js.map

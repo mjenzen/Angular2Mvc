@@ -5,13 +5,12 @@ import { IUser } from '../Model/user';
 import { DBOperation } from '../Shared/enum';
 import { Observable } from 'rxjs/Rx';
 import { Global } from '../Shared/global';
-import { ChildComponent } from './child.component';
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
 
 
 @Component({
     selector: 'user-component',
-    templateUrl: Global.TEMPLATE_LOCATION + '/user.template.html'
+    templateUrl: Global.TEMPLATE_LOCATION + 'user.template.html'
 })
 
 export class UserComponent implements OnInit {

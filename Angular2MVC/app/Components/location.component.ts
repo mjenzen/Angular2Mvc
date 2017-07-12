@@ -7,11 +7,11 @@ import { ObserverService } from "../Services/observer.service";
 import { Global } from "../Shared/global";
 
 @Component({
-    selector: 'child-component',
-    templateUrl: Global.TEMPLATE_LOCATION +'child.template.html'
+    selector: 'location-component',
+    templateUrl: Global.TEMPLATE_LOCATION + 'location.template.html'
 })
 
-export class ChildComponent implements OnInit{
+export class LocationComponent implements OnInit {
     @ViewChild('modal') modal: ModalComponent;
     books: IBook[];
     leadContactFrm: FormGroup;
@@ -54,19 +54,7 @@ export class ChildComponent implements OnInit{
 
         this.subscription = this._stateService.sourceItem$.subscribe(item => {
             console.log(item);
-            this.item = item;            
+            this.item = item;
         });
     }
-
-
-    onSubmit(formData: any) {
-
-    }
-
-    editUser(id: number) {
- 
-        this.modal.open();
-    }
-
-
 }

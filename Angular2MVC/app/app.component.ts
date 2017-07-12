@@ -1,13 +1,12 @@
 ﻿import { Component } from "@angular/core"
+import { Global } from "./Shared/global";
  
 
 @Component({
-    selector: "user-app",
-    templateUrl: 'app/Index.html'
+    selector: "stateDashboard-app",
+    templateUrl: 'app/index.html'
 })
 
 export class AppComponent {
-
-
 
 }

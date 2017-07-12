@@ -189,8 +189,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Index.html" />
-    <Content Include="app\Templates\child.template.html" />
+    <Content Include="app\Templates\characteristics.template.html" />
+    <Content Include="app\Templates\dashboard.template.html" />
+    <Content Include="app\Templates\leadContact.template.html" />
+    <Content Include="app\Templates\vendor.template.html" />
+    <Content Include="app\Templates\technicalContact.template.html" />
+    <Content Include="app\Templates\report.template.html" />
     <Content Include="app\Templates\state.template.html" />
+    <Content Include="app\Templates\location.template.html" />
     <Content Include="app\Templates\user.template.html" />
     <Content Include="app\Model\user.js" />
     <Content Include="app\assets\Index.js" />
@@ -285,10 +291,15 @@
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
     <TypeScriptCompile Include="app\app.routing.ts" />
-    <TypeScriptCompile Include="app\Components\child.component.ts" />
-    <TypeScriptCompile Include="app\Components\home.component.ts" />
+    <TypeScriptCompile Include="app\Components\characteristics.component.ts" />
+    <TypeScriptCompile Include="app\Components\dashboard.component.ts" />
+    <TypeScriptCompile Include="app\Components\leadContact.component.ts" />
+    <TypeScriptCompile Include="app\Components\location.component.ts" />
+    <TypeScriptCompile Include="app\Components\report.component.ts" />
     <TypeScriptCompile Include="app\Components\state.component.ts" />
+    <TypeScriptCompile Include="app\Components\technicalContact.component.ts" />
     <TypeScriptCompile Include="app\Components\user.component.ts" />
+    <TypeScriptCompile Include="app\Components\vendor.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Model\book.ts" />
     <TypeScriptCompile Include="app\Model\DropDownValue.ts" />

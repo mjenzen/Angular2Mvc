@@ -36,7 +36,7 @@ var StateComponent = (function () {
 StateComponent = __decorate([
     core_1.Component({
         selector: 'state-component',
-        templateUrl: global_1.Global.TEMPLATE_LOCATION + '/state.template.html'
+        templateUrl: global_1.Global.TEMPLATE_LOCATION + 'state.template.html'
     }),
     __metadata("design:paramtypes", [observer_service_1.ObserverService])
 ], StateComponent);
