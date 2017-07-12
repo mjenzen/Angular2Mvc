@@ -3,13 +3,67 @@
         <h3 class="panel-title">Lead Contacts (State Id: <strong>{{item}})</strong></h3>
         <span class="pull-right collapsePanel" style="margin-top: -20px; cursor:pointer"><i class="glyphicon glyphicon-chevron-up"></i></span>
     </div>
-    <div class="panel-body" *ngFor="let book of books">
-        <div class="row col-lg-12">
-            <h4> Title : {{book.title}} </h4> <h4>Price: {{book.price}}</h4>
-            <button title="Edit" class="btn btn-primary" (click)="editUser(book.id)">Edit</button>
+    <div class="panel-body" >
+        <div *ngFor="let contact of contacts; let i = index">
+            <div class="row">
+                <label class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-10">
+                    {{contact.Name}}
+                </div>
+            </div>
+
+            <div class="row">
+                <label class="col-sm-2 control-label">Role:</label>
+                <div class="col-sm-10">
+                    {{contact.Role}}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">Phone:</label>
+                <div class="col-sm-10">
+                    {{contact.Phone}}
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">Email:</label>
+                <div class="col-sm-10">
+                    {{contact.Email}}
+                </div>
+            </div>
+            <div class="row">
+
+                <label class="col-sm-2 control-label">Fax:</label>
+                <div class="col-sm-10">
+                    {{contact.Fax}}
+                </div>
+
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row">
+                <label class="col-sm-2 control-label">Additional:</label>
+                <div class="col-sm-10">
+                    {{contact.AdditionalInfo}}
+                </div>
+            </div>
+
+            <hr *ngIf='contacts.length - 1 != i' style="border-width:5px"/>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
 
 <modal #modal>
     <form novalidate (ngSubmit)="onSubmit(leadContactFrm)" [formGroup]="leadContactFrm">

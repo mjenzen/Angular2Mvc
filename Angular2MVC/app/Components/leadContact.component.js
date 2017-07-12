@@ -18,24 +18,27 @@ var LeadContactComponent = (function () {
     function LeadContactComponent(fb, _stateService) {
         this.fb = fb;
         this._stateService = _stateService;
-        this.books = [
+        this.contacts = [
             {
-                id: 0,
-                title: 'Maryland',
-                price: 'Rs. 1400'
+                Id: 0,
+                Name: 'j wall',
+                Role: 'Dev master',
+                Email: 'Dev@dev.com',
+                AdditionalInfo: 'Lulz.inc',
+                Fax: '8765309',
+                Phone: '40283029389'
             },
             {
-                id: 1,
-                title: 'California',
-                price: 'Rs. 1700'
-            },
-            {
-                id: 2,
-                title: 'Georgia',
-                price: 'Rs. 1000'
+                Id: 1,
+                Name: 'ben wall',
+                Role: 'scum master',
+                Email: 'scum@dev.com',
+                AdditionalInfo: 'Lulz.inc',
+                Fax: '8765309',
+                Phone: '40283029389'
             }
         ];
-        this.books.length;
+        this.contacts.length;
     }
     LeadContactComponent.prototype.ngOnDestroy = function () {
         // prevent memory leak when component is destroyed

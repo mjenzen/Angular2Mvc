@@ -199,7 +199,7 @@
     <Content Include="app\Templates\location.template.html" />
     <Content Include="app\Templates\user.template.html" />
     <Content Include="app\Model\user.js" />
-    <Content Include="app\assets\Index.js" />
+    <Content Include="app\Assets\Index.js" />
     <Content Include="App_Data\UserDB.mdf" />
     <Content Include="App_Data\UserDB_log.ldf">
       <DependentUpon>UserDB.mdf</DependentUpon>
@@ -303,6 +303,7 @@
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Model\book.ts" />
     <TypeScriptCompile Include="app\Model\DropDownValue.ts" />
+    <TypeScriptCompile Include="app\Model\leadContact.ts" />
     <TypeScriptCompile Include="app\Model\State.ts" />
     <TypeScriptCompile Include="app\Model\user.ts" />
     <TypeScriptCompile Include="app\Services\observer.service.ts" />

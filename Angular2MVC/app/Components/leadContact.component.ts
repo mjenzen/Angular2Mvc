@@ -5,6 +5,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from "rxjs/Subscription";
 import { ObserverService } from "../Services/observer.service";
 import { Global } from "../Shared/global";
+import { LeadContact } from "../Model/leadContact";
 
 @Component({
     selector: 'leadContact-component',
@@ -13,30 +14,33 @@ import { Global } from "../Shared/global";
 
 export class LeadContactComponent implements OnInit {
     @ViewChild('modal') modal: ModalComponent;
-    books: IBook[];
+    contacts: LeadContact[];
     leadContactFrm: FormGroup;
     subscription: Subscription;
     item: number;
 
     constructor(private fb: FormBuilder, private _stateService: ObserverService<number>) {
-        this.books = [
+        this.contacts = [
             {
-                id: 0,
-                title: 'Maryland',
-                price: 'Rs. 1400'
+                Id: 0,
+                Name: 'j wall',
+                Role: 'Dev master',
+                Email: 'Dev@dev.com',
+                AdditionalInfo: 'Lulz.inc',
+                Fax: '8765309',
+                Phone: '40283029389'
             },
             {
-                id: 1,
-                title: 'California',
-                price: 'Rs. 1700'
-            },
-            {
-                id: 2,
-                title: 'Georgia',
-                price: 'Rs. 1000'
+                Id: 1,
+                Name: 'ben wall',
+                Role: 'scum master',
+                Email: 'scum@dev.com',
+                AdditionalInfo: 'Lulz.inc',
+                Fax: '8765309',
+                Phone: '40283029389'
             }
         ]
-        this.books.length;
+        this.contacts.length;
 
     }
 
