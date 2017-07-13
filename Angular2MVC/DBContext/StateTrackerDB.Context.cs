@@ -15,9 +15,14 @@ namespace Angular2MVC.DBContext
     
     public partial class StateTrackerContext : DbContext
     {
+        private class StateTrackerContextInitializer : CreateDatabaseIfNotExists<StateTrackerContext>
+        {
+        }
+
         public StateTrackerContext()
             : base("name=StateTrackerContext")
         {
+            Database.SetInitializer<StateTrackerContext>(new StateTrackerContextInitializer());
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
