@@ -6,6 +6,7 @@ import { Subscription } from "rxjs/Subscription";
 import { ObserverService } from "../Services/observer.service";
 import { Global } from "../Shared/global";
 import { LeadContact } from "../Model/State/leadContact";
+import { LeadContactService } from "../Services/leadContact.service";
 
 @Component({
     selector: 'leadContact-component',
@@ -13,34 +14,14 @@ import { LeadContact } from "../Model/State/leadContact";
 })
 
 export class LeadContactComponent implements OnInit, OnDestroy {
+    msg: any;
     @ViewChild('modal') modal: ModalComponent;
     contacts: LeadContact[];
     leadContactFrm: FormGroup;
     subscription: Subscription;
-    item: number;
+    stateId: number;
 
-    constructor(private fb: FormBuilder, private _stateService: ObserverService<number>) {
-        this.contacts = [
-            {
-                Id: 0,
-                Name: 'j wall',
-                Role: 'Dev master',
-                Email: 'Dev@dev.com',
-                AdditionalInfo: 'Lulz.inc',
-                Fax: '8765309',
-                Phone: '40283029389'
-            },
-            {
-                Id: 1,
-                Name: 'ben wall',
-                Role: 'scum master',
-                Email: 'scum@dev.com',
-                AdditionalInfo: 'Lulz.inc',
-                Fax: '8765309',
-                Phone: '40283029389'
-            }
-        ]
-        this.contacts.length;
+    constructor(private fb: FormBuilder, private _stateService: ObserverService<number>, private _leadContactService: LeadContactService) {
 
     }
 
@@ -49,6 +30,14 @@ export class LeadContactComponent implements OnInit, OnDestroy {
         this.subscription.unsubscribe();
     }
 
+
+    LoadContacts(stateId: string): void {
+        this._leadContactService.get(Global.BASE_CONTACT_ENDPOINT, stateId)
+            .subscribe(contacts => { this.contacts = contacts; },
+            error => this.msg = <any>error);
+    }
+
+
     ngOnInit(): void {
         this.leadContactFrm = this.fb.group({
             Id: [''],
@@ -56,9 +45,12 @@ export class LeadContactComponent implements OnInit, OnDestroy {
             LastName: ['']
         });
 
-        this.subscription = this._stateService.sourceItem$.subscribe(item => {
-            console.log(item);
-            this.item = item;
+        this.subscription = this._stateService.sourceItem$.subscribe(id => {
+
+            if (id) {
+                this.stateId = id;
+                this.LoadContacts(id.toString());
+            }
         });
     }
 }

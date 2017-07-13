@@ -26,6 +26,7 @@ var StateComponent = (function () {
             .subscribe(function (states) {
             _this.selectedState = states[0];
             _this.states = states;
+            _this._observerService.changeState(states[0].Id);
         }, function (error) { return _this.msg = error; });
     };
     StateComponent.prototype.onChange = function (id) {

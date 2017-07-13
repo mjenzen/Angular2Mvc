@@ -17,12 +17,13 @@ import { TechnicalContactComponent } from "./Components/technicalContact.compone
 import { VendorComponent } from "./Components/vendor.component";
 import { DashboardComponent } from "./Components/dashboard.component";
 import { StateService } from "./Services/state.service";
+import { LeadContactService } from "./Services/leadContact.service";
 
 @NgModule({
     imports: [BrowserModule, ReactiveFormsModule, HttpModule, routing, Ng2Bs3ModalModule],
     declarations: [AppComponent, StateComponent, CharacteristicComponent, LeadContactComponent, 
         LocationComponent, ReportComponent, TechnicalContactComponent, VendorComponent, DashboardComponent],
-    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService, ObserverService, StateService],
+    providers: [{ provide: APP_BASE_HREF, useValue: '/' }, UserService, ObserverService, StateService, LeadContactService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

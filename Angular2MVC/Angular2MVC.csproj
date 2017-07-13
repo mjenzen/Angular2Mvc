@@ -247,7 +247,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\StateCharacteristicsModel.cs" />
+    <Compile Include="Models\StateContactModel.cs" />
+    <Compile Include="Models\StateLocationModel.cs" />
     <Compile Include="Models\StateModel.cs" />
+    <Compile Include="Models\StateReportStatusModel.cs" />
+    <Compile Include="Models\StateTechincalContactModel.cs" />
+    <Compile Include="Models\VendorContactModel.cs" />
+    <Compile Include="Models\VendorModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -439,6 +446,7 @@
     <TypeScriptCompile Include="app\Model\State\vendorContact.ts" />
     <TypeScriptCompile Include="app\Model\State\state.ts" />
     <TypeScriptCompile Include="app\Model\user.ts" />
+    <TypeScriptCompile Include="app\Services\leadContact.service.ts" />
     <TypeScriptCompile Include="app\Services\observer.service.ts" />
     <TypeScriptCompile Include="app\Services\state.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />

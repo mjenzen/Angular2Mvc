@@ -14,35 +14,21 @@ var modal_1 = require("ng2-bs3-modal/components/modal");
 var core_1 = require("@angular/core");
 var observer_service_1 = require("../Services/observer.service");
 var global_1 = require("../Shared/global");
+var leadContact_service_1 = require("../Services/leadContact.service");
 var LeadContactComponent = (function () {
-    function LeadContactComponent(fb, _stateService) {
+    function LeadContactComponent(fb, _stateService, _leadContactService) {
         this.fb = fb;
         this._stateService = _stateService;
-        this.contacts = [
-            {
-                Id: 0,
-                Name: 'j wall',
-                Role: 'Dev master',
-                Email: 'Dev@dev.com',
-                AdditionalInfo: 'Lulz.inc',
-                Fax: '8765309',
-                Phone: '40283029389'
-            },
-            {
-                Id: 1,
-                Name: 'ben wall',
-                Role: 'scum master',
-                Email: 'scum@dev.com',
-                AdditionalInfo: 'Lulz.inc',
-                Fax: '8765309',
-                Phone: '40283029389'
-            }
-        ];
-        this.contacts.length;
+        this._leadContactService = _leadContactService;
     }
     LeadContactComponent.prototype.ngOnDestroy = function () {
         // prevent memory leak when component is destroyed
         this.subscription.unsubscribe();
+    };
+    LeadContactComponent.prototype.LoadContacts = function (stateId) {
+        var _this = this;
+        this._leadContactService.get(global_1.Global.BASE_CONTACT_ENDPOINT, stateId)
+            .subscribe(function (contacts) { _this.contacts = contacts; }, function (error) { return _this.msg = error; });
     };
     LeadContactComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -52,8 +38,10 @@ var LeadContactComponent = (function () {
             LastName: ['']
         });
         this.subscription = this._stateService.sourceItem$.subscribe(function (item) {
-            console.log(item);
-            _this.item = item;
+            if (item) {
+                _this.item = item;
+                _this.LoadContacts(item.toString());
+            }
         });
     };
     return LeadContactComponent;
@@ -67,7 +55,7 @@ LeadContactComponent = __decorate([
         selector: 'leadContact-component',
         templateUrl: global_1.Global.TEMPLATE_LOCATION + 'leadContact.template.html'
     }),
-    __metadata("design:paramtypes", [forms_1.FormBuilder, observer_service_1.ObserverService])
+    __metadata("design:paramtypes", [forms_1.FormBuilder, observer_service_1.ObserverService, leadContact_service_1.LeadContactService])
 ], LeadContactComponent);
 exports.LeadContactComponent = LeadContactComponent;
 //# sourceMappingURL=leadContact.component.js.map

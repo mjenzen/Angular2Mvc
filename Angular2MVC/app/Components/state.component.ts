@@ -28,6 +28,7 @@ export class StateComponent implements OnInit, OnDestroy {
             .subscribe(states => {
                 this.selectedState = states[0];
                 this.states = states;
+                this._observerService.changeState(states[0].Id);
             },
             error => this.msg = <any>error);
     }
