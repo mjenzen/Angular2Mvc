@@ -3,3 +3,8 @@
     update = 2,
     delete =3
 }
+
+export enum ReportStatus {
+    Submitting,
+    Late
+};

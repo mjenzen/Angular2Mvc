@@ -1,18 +1,18 @@
 ﻿import { IBook } from '../Model/book';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Subscription } from "rxjs/Subscription";
 import { ObserverService } from "../Services/observer.service";
 import { Global } from "../Shared/global";
-import { LeadContact } from "../Model/leadContact";
+import { LeadContact } from "../Model/State/leadContact";
 
 @Component({
     selector: 'leadContact-component',
     templateUrl: Global.TEMPLATE_LOCATION + 'leadContact.template.html'
 })
 
-export class LeadContactComponent implements OnInit {
+export class LeadContactComponent implements OnInit, OnDestroy {
     @ViewChild('modal') modal: ModalComponent;
     contacts: LeadContact[];
     leadContactFrm: FormGroup;

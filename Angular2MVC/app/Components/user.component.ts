@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewChild } from '@angular/core';
+﻿import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { UserService } from '../Services/user.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IUser } from '../Model/user';
@@ -13,7 +13,7 @@ import { ModalComponent } from "ng2-bs3-modal/components/modal";
     templateUrl: Global.TEMPLATE_LOCATION + 'user.template.html'
 })
 
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
 
     @ViewChild('modal') modal: ModalComponent;
     users: IUser[];
@@ -75,7 +75,7 @@ export class UserComponent implements OnInit {
 
     onSubmit(formData: any) {
         this.msg = "";
-   
+
         switch (this.dbops) {
             case DBOperation.create:
                 this._userService.post(Global.BASE_USER_ENDPOINT, formData._value).subscribe(
@@ -85,15 +85,14 @@ export class UserComponent implements OnInit {
                             this.msg = "Data successfully added.";
                             this.LoadUsers();
                         }
-                        else
-                        {
+                        else {
                             this.msg = "There is some issue in saving records, please contact to system administrator!"
                         }
-                        
+
                         this.modal.dismiss();
                     },
                     error => {
-                      this.msg = error;
+                        this.msg = error;
                     }
                 );
                 break;
@@ -139,8 +138,11 @@ export class UserComponent implements OnInit {
         }
     }
 
-    SetControlsState(isEnable: boolean)
-    {
+    SetControlsState(isEnable: boolean) {
         isEnable ? this.userFrm.enable() : this.userFrm.disable();
+    }
+
+    ngOnDestroy(): void {
+        throw new Error('Method not implemented.');
     }
 }

@@ -1,0 +1,914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StateTrackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssessmentReport">
+          <Key>
+            <PropertyRef Name="AssessmentReportId" />
+          </Key>
+          <Property Name="StateId" Type="int" />
+          <Property Name="Days Since Last Update" Type="float" />
+          <Property Name="Date Last File Sent" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssessmentReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Communication">
+          <Key>
+            <PropertyRef Name="CommunicationId" />
+          </Key>
+          <Property Name="StateId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Communication Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="F6" Type="nvarchar" MaxLength="255" />
+          <Property Name="CommunicationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DemographicDataReport">
+          <Key>
+            <PropertyRef Name="DemographicDataReportId" />
+          </Key>
+          <Property Name="StateId" Type="int" />
+          <Property Name="Days Since Last Update" Type="float" />
+          <Property Name="Date Last File Sent" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="255" />
+          <Property Name="DemographicDataReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LastUpdateReport">
+          <Key>
+            <PropertyRef Name="LastUpdateReportId" />
+          </Key>
+          <Property Name="StateId" Type="int" />
+          <Property Name="Days Since Last Update" Type="float" />
+          <Property Name="Date Last File Sent" Type="datetime" />
+          <Property Name="Late" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastUpdateReportId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'StateTracker.dbo.ReportTemp' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ReportTemp">
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="Abbreviation" Type="nvarchar" MaxLength="255" />
+        </EntityType>-->
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="State" Type="nvarchar" MaxLength="255" />
+          <Property Name="StateId" Type="int" Nullable="false" />
+          <Property Name="Abbreviation" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="StateCharacteristic">
+          <Key>
+            <PropertyRef Name="CharacteristicId" />
+          </Key>
+          <Property Name="StateId" Type="int" />
+          <Property Name="TBD1" Type="float" />
+          <Property Name="TBD2" Type="float" />
+          <Property Name="CharacteristicId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Population" Type="bigint" />
+        </EntityType>
+        <EntityType Name="StateLeadContact">
+          <Key>
+            <PropertyRef Name="LeadContactId" />
+          </Key>
+          <Property Name="LeadContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Role" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone " Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="255" />
+          <Property Name="Additional" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StateLocation">
+          <Key>
+            <PropertyRef Name="StateLocationId" />
+          </Key>
+          <Property Name="StateId" Type="int" />
+          <Property Name="Building" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address Line 1" Type="nvarchar" MaxLength="255" />
+          <Property Name="Address Line 2" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="255" />
+          <Property Name="Zipcode" Type="float" />
+          <Property Name="StateLocationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StateTechnicalContact">
+          <Key>
+            <PropertyRef Name="TechnicalContactId" />
+          </Key>
+          <Property Name="TechnicalContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="ContactInfo" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="StateVendor">
+          <Key>
+            <PropertyRef Name="StateVendorId" />
+          </Key>
+          <Property Name="StateVendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateId" Type="int" />
+          <Property Name="VendorId" Type="int" />
+        </EntityType>
+        <EntityType Name="StateVendorContact">
+          <Key>
+            <PropertyRef Name="StateVendorContactId" />
+          </Key>
+          <Property Name="StateVendorContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorContactId" Type="int" />
+          <Property Name="StateId" Type="int" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorName" Type="varchar" MaxLength="250" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VendorContact">
+          <Key>
+            <PropertyRef Name="VendorContactId" />
+          </Key>
+          <Property Name="VendorContactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VendorId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="Role" Type="nvarchar" MaxLength="255" />
+          <Property Name="Phone " Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_AssessmentReport_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="AssessmentReport" Type="Self.AssessmentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="AssessmentReport">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Communication_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Communication" Type="Self.Communication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Communication">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DemographicDataReport_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="DemographicDataReport" Type="Self.DemographicDataReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="DemographicDataReport">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastUpdateReport_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="LastUpdateReport" Type="Self.LastUpdateReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="LastUpdateReport">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateCharacteristic_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateCharacteristic" Type="Self.StateCharacteristic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateCharacteristic">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateLeadContact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateLeadContact" Type="Self.StateLeadContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateLeadContact">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateLocation_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateLocation" Type="Self.StateLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateLocation">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateTechnicalContact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateTechnicalContact" Type="Self.StateTechnicalContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateTechnicalContact">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendor_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateVendor" Type="Self.StateVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateVendor">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendor_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="StateVendor" Type="Self.StateVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="StateVendor">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendorContact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateVendorContact" Type="Self.StateVendorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateVendorContact">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendorContact_VendorContact">
+          <End Role="VendorContact" Type="Self.VendorContact" Multiplicity="0..1" />
+          <End Role="StateVendorContact" Type="Self.StateVendorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorContact">
+              <PropertyRef Name="VendorContactId" />
+            </Principal>
+            <Dependent Role="StateVendorContact">
+              <PropertyRef Name="VendorContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorContact_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="VendorContact" Type="Self.VendorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="VendorContact">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StateTrackerModelStoreContainer">
+          <EntitySet Name="AssessmentReport" EntityType="Self.AssessmentReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Communication" EntityType="Self.Communication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DemographicDataReport" EntityType="Self.DemographicDataReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LastUpdateReport" EntityType="Self.LastUpdateReport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateCharacteristic" EntityType="Self.StateCharacteristic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateLeadContact" EntityType="Self.StateLeadContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateLocation" EntityType="Self.StateLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateTechnicalContact" EntityType="Self.StateTechnicalContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateVendor" EntityType="Self.StateVendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StateVendorContact" EntityType="Self.StateVendorContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vendor" EntityType="Self.Vendor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VendorContact" EntityType="Self.VendorContact" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AssessmentReport_State" Association="Self.FK_AssessmentReport_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="AssessmentReport" EntitySet="AssessmentReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Communication_State" Association="Self.FK_Communication_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Communication" EntitySet="Communication" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DemographicDataReport_State" Association="Self.FK_DemographicDataReport_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="DemographicDataReport" EntitySet="DemographicDataReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastUpdateReport_State" Association="Self.FK_LastUpdateReport_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="LastUpdateReport" EntitySet="LastUpdateReport" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateCharacteristic_State" Association="Self.FK_StateCharacteristic_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="StateCharacteristic" EntitySet="StateCharacteristic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateLeadContact_State" Association="Self.FK_StateLeadContact_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="StateLeadContact" EntitySet="StateLeadContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateLocation_State" Association="Self.FK_StateLocation_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="StateLocation" EntitySet="StateLocation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateTechnicalContact_State" Association="Self.FK_StateTechnicalContact_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="StateTechnicalContact" EntitySet="StateTechnicalContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendor_State" Association="Self.FK_StateVendor_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="StateVendor" EntitySet="StateVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendor_Vendor" Association="Self.FK_StateVendor_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="StateVendor" EntitySet="StateVendor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendorContact_State" Association="Self.FK_StateVendorContact_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="StateVendorContact" EntitySet="StateVendorContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendorContact_VendorContact" Association="Self.FK_StateVendorContact_VendorContact">
+            <End Role="VendorContact" EntitySet="VendorContact" />
+            <End Role="StateVendorContact" EntitySet="StateVendorContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorContact_Vendor" Association="Self.FK_VendorContact_Vendor">
+            <End Role="Vendor" EntitySet="Vendor" />
+            <End Role="VendorContact" EntitySet="VendorContact" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StateTrackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssessmentReport">
+          <Key>
+            <PropertyRef Name="AssessmentReportId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Days_Since_Last_Update" Type="Double" />
+          <Property Name="Date_Last_File_Sent" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssessmentReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="State" Relationship="Self.FK_AssessmentReport_State" FromRole="AssessmentReport" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Communication">
+          <Key>
+            <PropertyRef Name="CommunicationId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Communication_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="F6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CommunicationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Communication_State" FromRole="Communication" ToRole="State" />
+        </EntityType>
+        <EntityType Name="DemographicDataReport">
+          <Key>
+            <PropertyRef Name="DemographicDataReportId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Days_Since_Last_Update" Type="Double" />
+          <Property Name="Date_Last_File_Sent" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DemographicDataReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="State" Relationship="Self.FK_DemographicDataReport_State" FromRole="DemographicDataReport" ToRole="State" />
+        </EntityType>
+        <EntityType Name="LastUpdateReport">
+          <Key>
+            <PropertyRef Name="LastUpdateReportId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Days_Since_Last_Update" Type="Double" />
+          <Property Name="Date_Last_File_Sent" Type="DateTime" Precision="3" />
+          <Property Name="Late" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdateReportId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="State" Relationship="Self.FK_LastUpdateReport_State" FromRole="LastUpdateReport" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="State1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" Nullable="false" />
+          <Property Name="Abbreviation" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AssessmentReports" Relationship="Self.FK_AssessmentReport_State" FromRole="State" ToRole="AssessmentReport" />
+          <NavigationProperty Name="Communications" Relationship="Self.FK_Communication_State" FromRole="State" ToRole="Communication" />
+          <NavigationProperty Name="DemographicDataReports" Relationship="Self.FK_DemographicDataReport_State" FromRole="State" ToRole="DemographicDataReport" />
+          <NavigationProperty Name="LastUpdateReports" Relationship="Self.FK_LastUpdateReport_State" FromRole="State" ToRole="LastUpdateReport" />
+          <NavigationProperty Name="StateCharacteristics" Relationship="Self.FK_StateCharacteristic_State" FromRole="State" ToRole="StateCharacteristic" />
+          <NavigationProperty Name="StateLeadContacts" Relationship="Self.FK_StateLeadContact_State" FromRole="State" ToRole="StateLeadContact" />
+          <NavigationProperty Name="StateLocations" Relationship="Self.FK_StateLocation_State" FromRole="State" ToRole="StateLocation" />
+          <NavigationProperty Name="StateTechnicalContacts" Relationship="Self.FK_StateTechnicalContact_State" FromRole="State" ToRole="StateTechnicalContact" />
+          <NavigationProperty Name="StateVendors" Relationship="Self.FK_StateVendor_State" FromRole="State" ToRole="StateVendor" />
+          <NavigationProperty Name="StateVendorContacts" Relationship="Self.FK_StateVendorContact_State" FromRole="State" ToRole="StateVendorContact" />
+        </EntityType>
+        <EntityType Name="StateCharacteristic">
+          <Key>
+            <PropertyRef Name="CharacteristicId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="TBD1" Type="Double" />
+          <Property Name="TBD2" Type="Double" />
+          <Property Name="CharacteristicId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Population" Type="Int64" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateCharacteristic_State" FromRole="StateCharacteristic" ToRole="State" />
+        </EntityType>
+        <EntityType Name="StateLeadContact">
+          <Key>
+            <PropertyRef Name="LeadContactId" />
+          </Key>
+          <Property Name="LeadContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Additional" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateLeadContact_State" FromRole="StateLeadContact" ToRole="State" />
+        </EntityType>
+        <EntityType Name="StateLocation">
+          <Key>
+            <PropertyRef Name="StateLocationId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="Building" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address_Line_1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Address_Line_2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Zipcode" Type="Double" />
+          <Property Name="StateLocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateLocation_State" FromRole="StateLocation" ToRole="State" />
+        </EntityType>
+        <EntityType Name="StateTechnicalContact">
+          <Key>
+            <PropertyRef Name="TechnicalContactId" />
+          </Key>
+          <Property Name="TechnicalContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="ContactInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateTechnicalContact_State" FromRole="StateTechnicalContact" ToRole="State" />
+        </EntityType>
+        <EntityType Name="StateVendor">
+          <Key>
+            <PropertyRef Name="StateVendorId" />
+          </Key>
+          <Property Name="StateVendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateId" Type="Int32" />
+          <Property Name="VendorId" Type="Int32" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateVendor_State" FromRole="StateVendor" ToRole="State" />
+          <NavigationProperty Name="Vendor" Relationship="Self.FK_StateVendor_Vendor" FromRole="StateVendor" ToRole="Vendor" />
+        </EntityType>
+        <EntityType Name="StateVendorContact">
+          <Key>
+            <PropertyRef Name="StateVendorContactId" />
+          </Key>
+          <Property Name="StateVendorContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorContactId" Type="Int32" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="State" Relationship="Self.FK_StateVendorContact_State" FromRole="StateVendorContact" ToRole="State" />
+          <NavigationProperty Name="VendorContact" Relationship="Self.FK_StateVendorContact_VendorContact" FromRole="StateVendorContact" ToRole="VendorContact" />
+        </EntityType>
+        <EntityType Name="Vendor">
+          <Key>
+            <PropertyRef Name="VendorId" />
+          </Key>
+          <Property Name="VendorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorName" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="StateVendors" Relationship="Self.FK_StateVendor_Vendor" FromRole="Vendor" ToRole="StateVendor" />
+          <NavigationProperty Name="VendorContacts" Relationship="Self.FK_VendorContact_Vendor" FromRole="Vendor" ToRole="VendorContact" />
+        </EntityType>
+        <EntityType Name="VendorContact">
+          <Key>
+            <PropertyRef Name="VendorContactId" />
+          </Key>
+          <Property Name="VendorContactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VendorId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Phone_" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="StateVendorContacts" Relationship="Self.FK_StateVendorContact_VendorContact" FromRole="VendorContact" ToRole="StateVendorContact" />
+          <NavigationProperty Name="Vendor" Relationship="Self.FK_VendorContact_Vendor" FromRole="VendorContact" ToRole="Vendor" />
+        </EntityType>
+        <Association Name="FK_AssessmentReport_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="AssessmentReport" Type="Self.AssessmentReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="AssessmentReport">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Communication_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Communication" Type="Self.Communication" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="Communication">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DemographicDataReport_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="DemographicDataReport" Type="Self.DemographicDataReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="DemographicDataReport">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LastUpdateReport_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="LastUpdateReport" Type="Self.LastUpdateReport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="LastUpdateReport">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateCharacteristic_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateCharacteristic" Type="Self.StateCharacteristic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateCharacteristic">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateLeadContact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateLeadContact" Type="Self.StateLeadContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateLeadContact">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateLocation_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateLocation" Type="Self.StateLocation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateLocation">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateTechnicalContact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateTechnicalContact" Type="Self.StateTechnicalContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateTechnicalContact">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendor_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateVendor" Type="Self.StateVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateVendor">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendorContact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="StateVendorContact" Type="Self.StateVendorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="StateVendorContact">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendor_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="StateVendor" Type="Self.StateVendor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="StateVendor">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_StateVendorContact_VendorContact">
+          <End Role="VendorContact" Type="Self.VendorContact" Multiplicity="0..1" />
+          <End Role="StateVendorContact" Type="Self.StateVendorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VendorContact">
+              <PropertyRef Name="VendorContactId" />
+            </Principal>
+            <Dependent Role="StateVendorContact">
+              <PropertyRef Name="VendorContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VendorContact_Vendor">
+          <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+          <End Role="VendorContact" Type="Self.VendorContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vendor">
+              <PropertyRef Name="VendorId" />
+            </Principal>
+            <Dependent Role="VendorContact">
+              <PropertyRef Name="VendorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StateTrackerContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssessmentReports" EntityType="Self.AssessmentReport" />
+          <EntitySet Name="Communications" EntityType="Self.Communication" />
+          <EntitySet Name="DemographicDataReports" EntityType="Self.DemographicDataReport" />
+          <EntitySet Name="LastUpdateReports" EntityType="Self.LastUpdateReport" />
+          <EntitySet Name="States" EntityType="Self.State" />
+          <EntitySet Name="StateCharacteristics" EntityType="Self.StateCharacteristic" />
+          <EntitySet Name="StateLeadContacts" EntityType="Self.StateLeadContact" />
+          <EntitySet Name="StateLocations" EntityType="Self.StateLocation" />
+          <EntitySet Name="StateTechnicalContacts" EntityType="Self.StateTechnicalContact" />
+          <EntitySet Name="StateVendors" EntityType="Self.StateVendor" />
+          <EntitySet Name="StateVendorContacts" EntityType="Self.StateVendorContact" />
+          <EntitySet Name="Vendors" EntityType="Self.Vendor" />
+          <EntitySet Name="VendorContacts" EntityType="Self.VendorContact" />
+          <AssociationSet Name="FK_AssessmentReport_State" Association="Self.FK_AssessmentReport_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="AssessmentReport" EntitySet="AssessmentReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Communication_State" Association="Self.FK_Communication_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="Communication" EntitySet="Communications" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DemographicDataReport_State" Association="Self.FK_DemographicDataReport_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="DemographicDataReport" EntitySet="DemographicDataReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LastUpdateReport_State" Association="Self.FK_LastUpdateReport_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="LastUpdateReport" EntitySet="LastUpdateReports" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateCharacteristic_State" Association="Self.FK_StateCharacteristic_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="StateCharacteristic" EntitySet="StateCharacteristics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateLeadContact_State" Association="Self.FK_StateLeadContact_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="StateLeadContact" EntitySet="StateLeadContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateLocation_State" Association="Self.FK_StateLocation_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="StateLocation" EntitySet="StateLocations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateTechnicalContact_State" Association="Self.FK_StateTechnicalContact_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="StateTechnicalContact" EntitySet="StateTechnicalContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendor_State" Association="Self.FK_StateVendor_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="StateVendor" EntitySet="StateVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendorContact_State" Association="Self.FK_StateVendorContact_State">
+            <End Role="State" EntitySet="States" />
+            <End Role="StateVendorContact" EntitySet="StateVendorContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendor_Vendor" Association="Self.FK_StateVendor_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="StateVendor" EntitySet="StateVendors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_StateVendorContact_VendorContact" Association="Self.FK_StateVendorContact_VendorContact">
+            <End Role="VendorContact" EntitySet="VendorContacts" />
+            <End Role="StateVendorContact" EntitySet="StateVendorContacts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VendorContact_Vendor" Association="Self.FK_VendorContact_Vendor">
+            <End Role="Vendor" EntitySet="Vendors" />
+            <End Role="VendorContact" EntitySet="VendorContacts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StateTrackerModelStoreContainer" CdmEntityContainer="StateTrackerContext">
+          <EntitySetMapping Name="AssessmentReports">
+            <EntityTypeMapping TypeName="StateTrackerModel.AssessmentReport">
+              <MappingFragment StoreEntitySet="AssessmentReport">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Days_Since_Last_Update" ColumnName="Days Since Last Update" />
+                <ScalarProperty Name="Date_Last_File_Sent" ColumnName="Date Last File Sent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="AssessmentReportId" ColumnName="AssessmentReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Communications">
+            <EntityTypeMapping TypeName="StateTrackerModel.Communication">
+              <MappingFragment StoreEntitySet="Communication">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Communication_Type" ColumnName="Communication Type" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="F6" ColumnName="F6" />
+                <ScalarProperty Name="CommunicationId" ColumnName="CommunicationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DemographicDataReports">
+            <EntityTypeMapping TypeName="StateTrackerModel.DemographicDataReport">
+              <MappingFragment StoreEntitySet="DemographicDataReport">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Days_Since_Last_Update" ColumnName="Days Since Last Update" />
+                <ScalarProperty Name="Date_Last_File_Sent" ColumnName="Date Last File Sent" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DemographicDataReportId" ColumnName="DemographicDataReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LastUpdateReports">
+            <EntityTypeMapping TypeName="StateTrackerModel.LastUpdateReport">
+              <MappingFragment StoreEntitySet="LastUpdateReport">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Days_Since_Last_Update" ColumnName="Days Since Last Update" />
+                <ScalarProperty Name="Date_Last_File_Sent" ColumnName="Date Last File Sent" />
+                <ScalarProperty Name="Late" ColumnName="Late" />
+                <ScalarProperty Name="LastUpdateReportId" ColumnName="LastUpdateReportId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="States">
+            <EntityTypeMapping TypeName="StateTrackerModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="State1" ColumnName="State" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Abbreviation" ColumnName="Abbreviation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateCharacteristics">
+            <EntityTypeMapping TypeName="StateTrackerModel.StateCharacteristic">
+              <MappingFragment StoreEntitySet="StateCharacteristic">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="TBD1" ColumnName="TBD1" />
+                <ScalarProperty Name="TBD2" ColumnName="TBD2" />
+                <ScalarProperty Name="CharacteristicId" ColumnName="CharacteristicId" />
+                <ScalarProperty Name="Population" ColumnName="Population" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateLeadContacts">
+            <EntityTypeMapping TypeName="StateTrackerModel.StateLeadContact">
+              <MappingFragment StoreEntitySet="StateLeadContact">
+                <ScalarProperty Name="LeadContactId" ColumnName="LeadContactId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Phone_" ColumnName="Phone " />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Additional" ColumnName="Additional" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateLocations">
+            <EntityTypeMapping TypeName="StateTrackerModel.StateLocation">
+              <MappingFragment StoreEntitySet="StateLocation">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="Building" ColumnName="Building" />
+                <ScalarProperty Name="Address_Line_1" ColumnName="Address Line 1" />
+                <ScalarProperty Name="Address_Line_2" ColumnName="Address Line 2" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Zipcode" ColumnName="Zipcode" />
+                <ScalarProperty Name="StateLocationId" ColumnName="StateLocationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateTechnicalContacts">
+            <EntityTypeMapping TypeName="StateTrackerModel.StateTechnicalContact">
+              <MappingFragment StoreEntitySet="StateTechnicalContact">
+                <ScalarProperty Name="TechnicalContactId" ColumnName="TechnicalContactId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="ContactInfo" ColumnName="ContactInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateVendors">
+            <EntityTypeMapping TypeName="StateTrackerModel.StateVendor">
+              <MappingFragment StoreEntitySet="StateVendor">
+                <ScalarProperty Name="StateVendorId" ColumnName="StateVendorId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateVendorContacts">
+            <EntityTypeMapping TypeName="StateTrackerModel.StateVendorContact">
+              <MappingFragment StoreEntitySet="StateVendorContact">
+                <ScalarProperty Name="StateVendorContactId" ColumnName="StateVendorContactId" />
+                <ScalarProperty Name="VendorContactId" ColumnName="VendorContactId" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vendors">
+            <EntityTypeMapping TypeName="StateTrackerModel.Vendor">
+              <MappingFragment StoreEntitySet="Vendor">
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="VendorName" ColumnName="VendorName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VendorContacts">
+            <EntityTypeMapping TypeName="StateTrackerModel.VendorContact">
+              <MappingFragment StoreEntitySet="VendorContact">
+                <ScalarProperty Name="VendorContactId" ColumnName="VendorContactId" />
+                <ScalarProperty Name="VendorId" ColumnName="VendorId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Phone_" ColumnName="Phone " />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

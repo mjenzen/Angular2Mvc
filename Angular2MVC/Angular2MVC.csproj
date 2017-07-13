@@ -163,7 +163,57 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\BaseAPIController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StateController.cs" />
+    <Compile Include="Code\StateRepository.cs" />
     <Compile Include="Controllers\UserAPIController.cs" />
+    <Compile Include="DBContext\AssessmentReport.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\Communication.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\DemographicDataReport.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\LastUpdateReport.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\State.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateCharacteristic.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateLeadContact.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateLocation.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateTechnicalContact.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateTrackerDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateTrackerDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateTrackerDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateTrackerDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StateTrackerDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateVendor.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\StateVendorContact.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBContext\TblUser.cs">
       <DependentUpon>UserDBEntities.tt</DependentUpon>
     </Compile>
@@ -182,12 +232,68 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UserDBEntities.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DBContext\Vendor.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBContext\VendorContact.cs">
+      <DependentUpon>StateTrackerDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="app\Assets\Images\ak.png" />
+    <Content Include="app\Assets\Images\al.png" />
+    <Content Include="app\Assets\Images\ar.png" />
+    <Content Include="app\Assets\Images\az.png" />
+    <Content Include="app\Assets\Images\ca.png" />
+    <Content Include="app\Assets\Images\co.png" />
+    <Content Include="app\Assets\Images\ct.png" />
+    <Content Include="app\Assets\Images\de.png" />
+    <Content Include="app\Assets\Images\fl.png" />
+    <Content Include="app\Assets\Images\ga.png" />
+    <Content Include="app\Assets\Images\hi.png" />
+    <Content Include="app\Assets\Images\ia.png" />
+    <Content Include="app\Assets\Images\id.png" />
+    <Content Include="app\Assets\Images\il.png" />
+    <Content Include="app\Assets\Images\in.png" />
+    <Content Include="app\Assets\Images\ks.png" />
+    <Content Include="app\Assets\Images\ky.png" />
+    <Content Include="app\Assets\Images\la.png" />
+    <Content Include="app\Assets\Images\ma.png" />
+    <Content Include="app\Assets\Images\md.png" />
+    <Content Include="app\Assets\Images\me.png" />
+    <Content Include="app\Assets\Images\mi.png" />
+    <Content Include="app\Assets\Images\mn.png" />
+    <Content Include="app\Assets\Images\mo.png" />
+    <Content Include="app\Assets\Images\ms.png" />
+    <Content Include="app\Assets\Images\mt.png" />
+    <Content Include="app\Assets\Images\nc.png" />
+    <Content Include="app\Assets\Images\nd.png" />
+    <Content Include="app\Assets\Images\ne.png" />
+    <Content Include="app\Assets\Images\nh.png" />
+    <Content Include="app\Assets\Images\nj.png" />
+    <Content Include="app\Assets\Images\nm.png" />
+    <Content Include="app\Assets\Images\nv.png" />
+    <Content Include="app\Assets\Images\ny.png" />
+    <Content Include="app\Assets\Images\oh.png" />
+    <Content Include="app\Assets\Images\ok.png" />
+    <Content Include="app\Assets\Images\or.png" />
+    <Content Include="app\Assets\Images\pa.png" />
+    <Content Include="app\Assets\Images\ri.png" />
+    <Content Include="app\Assets\Images\sc.png" />
+    <Content Include="app\Assets\Images\sd.png" />
+    <Content Include="app\Assets\Images\tn.png" />
+    <Content Include="app\Assets\Images\tx.png" />
+    <Content Include="app\Assets\Images\ut.png" />
+    <Content Include="app\Assets\Images\va.png" />
+    <Content Include="app\Assets\Images\vt.png" />
+    <Content Include="app\Assets\Images\wa.png" />
+    <Content Include="app\Assets\Images\wi.png" />
+    <Content Include="app\Assets\Images\wv.png" />
+    <Content Include="app\Assets\Images\wy.png" />
     <Content Include="app\Index.html" />
     <Content Include="app\Templates\characteristics.template.html" />
     <Content Include="app\Templates\dashboard.template.html" />
@@ -206,6 +312,16 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DBContext\StateTrackerDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StateTrackerDB.edmx</DependentUpon>
+      <LastGenOutput>StateTrackerDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DBContext\StateTrackerDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StateTrackerDB.edmx</DependentUpon>
+      <LastGenOutput>StateTrackerDB.cs</LastGenOutput>
+    </Content>
     <Content Include="DBContext\UserDBEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>UserDBEntities.edmx</DependentUpon>
@@ -235,6 +351,13 @@
       <DependentUpon>UserDBEntities.edmx</DependentUpon>
     </Content>
     <Content Include="app\Model\user.js.map" />
+    <EntityDeploy Include="DBContext\StateTrackerDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StateTrackerDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DBContext\StateTrackerDB.edmx.diagram">
+      <DependentUpon>StateTrackerDB.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -302,11 +425,17 @@
     <TypeScriptCompile Include="app\Components\vendor.component.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\Model\book.ts" />
-    <TypeScriptCompile Include="app\Model\DropDownValue.ts" />
-    <TypeScriptCompile Include="app\Model\leadContact.ts" />
-    <TypeScriptCompile Include="app\Model\State.ts" />
+    <TypeScriptCompile Include="app\Model\dropDownValue.ts" />
+    <TypeScriptCompile Include="app\Model\State\stateReportStatus.ts" />
+    <TypeScriptCompile Include="app\Model\State\stateCharacteristic.ts" />
+    <TypeScriptCompile Include="app\Model\State\stateLocation.ts" />
+    <TypeScriptCompile Include="app\Model\State\leadContact.ts" />
+    <TypeScriptCompile Include="app\Model\State\technicalContact.ts" />
+    <TypeScriptCompile Include="app\Model\State\vendorContact.ts" />
+    <TypeScriptCompile Include="app\Model\State\state.ts" />
     <TypeScriptCompile Include="app\Model\user.ts" />
     <TypeScriptCompile Include="app\Services\observer.service.ts" />
+    <TypeScriptCompile Include="app\Services\state.service.ts" />
     <TypeScriptCompile Include="app\Services\user.service.ts" />
     <TypeScriptCompile Include="app\Shared\enum.ts" />
     <TypeScriptCompile Include="app\Shared\global.ts" />

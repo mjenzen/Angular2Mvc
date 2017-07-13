@@ -1,7 +1,7 @@
 ﻿import { IBook } from '../Model/book';
 import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { ModalComponent } from "ng2-bs3-modal/components/modal";
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { Subscription } from "rxjs/Subscription";
 import { ObserverService } from "../Services/observer.service";
 import { Global } from "../Shared/global";
@@ -11,7 +11,7 @@ import { Global } from "../Shared/global";
     templateUrl: Global.TEMPLATE_LOCATION + 'location.template.html'
 })
 
-export class LocationComponent implements OnInit {
+export class LocationComponent implements OnInit, OnDestroy {
     @ViewChild('modal') modal: ModalComponent;
     books: IBook[];
     leadContactFrm: FormGroup;

@@ -113,6 +113,9 @@ var UserComponent = (function () {
     UserComponent.prototype.SetControlsState = function (isEnable) {
         isEnable ? this.userFrm.enable() : this.userFrm.disable();
     };
+    UserComponent.prototype.ngOnDestroy = function () {
+        throw new Error('Method not implemented.');
+    };
     return UserComponent;
 }());
 __decorate([

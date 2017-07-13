@@ -24,6 +24,7 @@ var report_component_1 = require("./Components/report.component");
 var technicalContact_component_1 = require("./Components/technicalContact.component");
 var vendor_component_1 = require("./Components/vendor.component");
 var dashboard_component_1 = require("./Components/dashboard.component");
+var state_service_1 = require("./Services/state.service");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -34,7 +35,7 @@ AppModule = __decorate([
         imports: [platform_browser_1.BrowserModule, forms_1.ReactiveFormsModule, http_1.HttpModule, app_routing_1.routing, ng2_bs3_modal_1.Ng2Bs3ModalModule],
         declarations: [app_component_1.AppComponent, state_component_1.StateComponent, characteristics_component_1.CharacteristicComponent, leadContact_component_1.LeadContactComponent,
             location_component_1.LocationComponent, report_component_1.ReportComponent, technicalContact_component_1.TechnicalContactComponent, vendor_component_1.VendorComponent, dashboard_component_1.DashboardComponent],
-        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, user_service_1.UserService, observer_service_1.ObserverService],
+        providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }, user_service_1.UserService, observer_service_1.ObserverService, state_service_1.StateService],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

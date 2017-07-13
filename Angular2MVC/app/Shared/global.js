@@ -6,6 +6,7 @@ var Global = (function () {
     return Global;
 }());
 Global.BASE_USER_ENDPOINT = 'api/userapi/';
+Global.BASE_STATE_ENDPOINT = 'api/state/';
 Global.TEMPLATE_LOCATION = 'app/Templates/';
 exports.Global = Global;
 //# sourceMappingURL=global.js.map

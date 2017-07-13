@@ -8,4 +8,4 @@ var DropdownValue = (function () {
     return DropdownValue;
 }());
 exports.DropdownValue = DropdownValue;
-//# sourceMappingURL=DropDownValue.js.map
+//# sourceMappingURL=dropDownValue.js.map
