@@ -37,10 +37,10 @@ var LeadContactComponent = (function () {
             FirstName: ['', forms_1.Validators.required],
             LastName: ['']
         });
-        this.subscription = this._stateService.sourceItem$.subscribe(function (item) {
-            if (item) {
-                _this.item = item;
-                _this.LoadContacts(item.toString());
+        this.subscription = this._stateService.sourceItem$.subscribe(function (id) {
+            if (id) {
+                _this.stateId = id;
+                _this.LoadContacts(id.toString());
             }
         });
     };
